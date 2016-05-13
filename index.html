@@ -19,8 +19,8 @@
           <div ng-controller="MoviesCtrl">
 <div class="movies-header-toolbar">
             <div class="movies-edit-panel">
-                <button type="button" class="btn glyphicon glyphicon-plus" ng-click="addMovie()"></button>
-                <button ng-show="!isDeleting" type="button" class="btn glyphicon glyphicon-trash" ng-click="deleteMovies()"></button>
+                <button id="movie-add-button" type="button" class="btn glyphicon glyphicon-plus" ng-click="addMovie()"></button>
+                <button id="movie-activate-delete-button" ng-show="!isDeleting" type="button" class="btn glyphicon glyphicon-trash" ng-click="deleteMovies()"></button>
                 <button ng-hide="!isDeleting" type="button" class="btn done-button" ng-click="doneDeleteMovies()">Done</button>
             </div>
 </div>        
@@ -32,7 +32,7 @@
                 <li class="movie-container" ng-repeat="movie in movies | filterByYear: 2014 track by movie.id">
                     <div class="movie-item">
                         <div class="movie-image-container">
-                            <img class="movie-image" ng-src="{{movie.posterImage}}" uib-tooltip="{{movie.shortDescription}}" tooltip-placement="bottom" tooltip-popup-delay='1500' alt="film image"/>
+                            <img id="movie-image-{{$index}}" class="movie-image" ng-src="{{movie.posterImage}}" uib-tooltip="{{movie.shortDescription}}" tooltip-placement="bottom" tooltip-popup-delay='1500' alt="film image"/>
                             <div ng-show="isDeleting" class="movie-delete-icon glyphicon glyphicon-minus-sign delete-icon" ng-click="deleteMovie($index, movie)"/>
                         </div>
                         <div class="movie-name">{{movie.name | uppercase}}</div>

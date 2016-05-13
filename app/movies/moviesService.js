@@ -28,9 +28,24 @@ angular.module('movieLibrary').service('MoviesService', [function() {
   
   var getMovies = function(){
       return movies;
-  }
-  
+  };
+
+  var isIdValid = function(id){
+    var retval = true;
+    movies.every(function(movie){
+      if (movie.id == id){
+        retval = false;
+        return false;
+      } else{
+        return true;
+      }
+    });
+
+    return retval;
+  };
+
   return {
-      getMovies: getMovies
+      getMovies: getMovies,
+      isIdValid: isIdValid
   } 
 }]);
